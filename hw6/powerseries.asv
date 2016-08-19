@@ -1,0 +1,20 @@
+function [] = powerseries(nergal,Amaterasu,Piplup,venosaur) 
+%nergal is itterations, Amaterasu is initial matrix, 
+%piplup is initial guess of eigen vector venosaur is actual eigen vector
+for ditto = 1:nergal 
+Piplup(:,ditto+1) = Amaterasu*Piplup(:,ditto); 
+seviper = max(abs(Piplup(:,ditto+1))); 
+Piplup(:,ditto+1) = Piplup(:,ditto+1)/seviper; %need in range of 0 to 1
+Eevee = norm(Piplup(:,ditto+1)-venosaur)/norm(Piplup(:,ditto)-venosaur); 
+Charmander = norm(Piplup(:,ditto+1)-venosaur); 
+fprintf('%2d %9.6f %9.6f %9.6f %4.2f %12.6e \n' , ditto , Piplup(1,ditto+1), Piplup(2,ditto+1), seviper, Eevee, Charmander); 
+end
+end
+%ditto is itteration number
+%Piplup is the terms of the eigenvector
+%seviper gives the largest term in the current itteration of q
+%Eevee gives error of current itteration divided by error of previous
+%iteration(rate of convergence basically)
+%Charmander gives biggest difference (one term) b/t the real and guess eigenvector
+%i named everything after memerable things to me... not sure why but it was
+%fun
